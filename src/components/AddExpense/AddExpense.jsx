@@ -7,24 +7,29 @@ const AddExpense = (props) => {
   const [formDate, setFormDate] = useState("");
 
   const getInputDetails = (trigger, value) => {
-    if (trigger == "name") {
+    if (trigger === "name") {
       setFormTitle(value);
-    } else if (trigger == "amount") {
+    } else if (trigger === "amount") {
       setFormAmount(value);
-    } else if (trigger == "date") {
-        setFormDate(value);
+    } else if (trigger === "date") {
+      setFormDate(value);
     }
   };
 
   const saveDetails = (event) => {
-    event.preventDefault();
-    const formData = {
-      "id": Math.random(), "title": formTitle, "amount": formAmount, "date": Date(formDate)
-    };
-    props.onExpenseDataHandeler(formData)
-    setFormTitle("");
-    setFormAmount("");
-    setFormDate("");
+    if (formTitle && formAmount && formDate) {
+      event.preventDefault();
+      const formData = {
+        id: Math.random(),
+        name: formTitle,
+        amount: formAmount,
+        date: new Date(formDate),
+      };
+      props.onExpenseDataHandeler(formData);
+      setFormTitle("");
+      setFormAmount("");
+      setFormDate("");
+    }
   };
   return (
     <Card className="add-expense">
@@ -57,8 +62,8 @@ const AddExpense = (props) => {
             type="date"
             value={formDate}
             onChange={(event) => {
-                getInputDetails("date", event.target.value);
-              }}
+              getInputDetails("date", event.target.value);
+            }}
           ></input>
         </div>
 

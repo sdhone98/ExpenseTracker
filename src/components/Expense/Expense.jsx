@@ -3,15 +3,17 @@ import Date from "../Date/Date.jsx";
 import Card from "../UI/Card.jsx";
 
 const Expense = (props) => {
-  return (
-    <Card className="expense-item">
-      <Date date={props.data.date} />
+  const data = props.data;
+
+  return (data.map((obj) => (
+    <Card className="expense-item" key={obj.id}>
+      <Date date={obj.date} />
       <div className="expense-item__description">
-        <h2>{props.data.name}</h2>
-        <div className="expense-item__price">₹ {props.data.amount}</div>
+        <h2>{obj.name}</h2>
+        <div className="expense-item__price">₹ {obj.amount}</div>
       </div>
     </Card>
-  );
+  )));
 };
 
 export default Expense;
