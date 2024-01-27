@@ -1,5 +1,5 @@
 .add-expense {
-  background-color: rgb(202, 15, 15);
+  width: 100%;
   display: flex;
 
   .add-expense-form {
@@ -61,5 +61,12 @@
     height: 2rem;
     border-radius: 7px;
     border: None;
+  }
+}
+
+@media screen and (min-width: 720px) {
+  .add-expense{
+
+   width: 60%;
   }
 }

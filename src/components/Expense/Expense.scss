@@ -1,4 +1,5 @@
 .expense-item {
+  width: 60%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -34,22 +35,10 @@
     border-radius: 8px;
   }
 
-  // @media (min-width: 580px) {
-  //   .expense-item__description {
-  //     flex-direction: row;
-  //     align-items: center;
-  //     justify-content: flex-start;
-  //     flex: 1;
-  //   }
-  
-  //   .expense-item__description h2 {
-  //     font-size: 1.25rem;
-  //   }
-  
-  //   .expense-item__price {
-  //     font-size: 1.25rem;
-  //     padding: 0.5rem 1.5rem;
-  //   }
-  // }
 }
+@media screen and (max-width: 720px) {
+  .expense-item {
+   width: 100%;
 
+  }
+}

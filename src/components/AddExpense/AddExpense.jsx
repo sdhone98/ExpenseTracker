@@ -1,10 +1,10 @@
 import { useState } from "react";
 import "./AddExpense.scss";
 import Card from "../UI/Card";
-const AddExpense = () => {
+const AddExpense = (props) => {
   const [formTitle, setFormTitle] = useState("");
   const [formAmount, setFormAmount] = useState("");
-  const [formDate, setFormDate] = useState(Date());
+  const [formDate, setFormDate] = useState("");
 
   const getInputDetails = (trigger, value) => {
     if (trigger == "name") {
@@ -14,15 +14,17 @@ const AddExpense = () => {
     } else if (trigger == "date") {
         setFormDate(value);
     }
-    console.log(value);
   };
 
   const saveDetails = (event) => {
     event.preventDefault();
-    console.log({ id: Math.random(), title: formTitle, ampunt: formAmount, date: formDate });
-    setFormTitle("")
-    setFormAmount("")
-    setFormDate(Date())
+    const formData = {
+      "id": Math.random(), "title": formTitle, "amount": formAmount, "date": Date(formDate)
+    };
+    props.onExpenseDataHandeler(formData)
+    setFormTitle("");
+    setFormAmount("");
+    setFormDate("");
   };
   return (
     <Card className="add-expense">
