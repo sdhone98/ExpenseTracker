@@ -9,6 +9,10 @@
   border-radius: 12px;
   padding-bottom: 1rem;
 
+  .expense-list {
+    min-width: 5rem;
+  }
+
   
 }
 @media (width > 720px) {
