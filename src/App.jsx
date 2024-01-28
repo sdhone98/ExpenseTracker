@@ -4,6 +4,7 @@ import AddExpense from "./components/AddExpense/AddExpense.jsx";
 import ExpenseFilter from "./components/Expense/ExpenseFilter.jsx";
 import Card from "./components/UI/Card.jsx";
 import { useState } from "react";
+import ExpenseItem from "./components/Expense/ExpenseItem.jsx";
 
 const expenseData = [
   {
@@ -33,20 +34,11 @@ const expenseData = [
 ];
 
 function App() {
-  let temp = [
-    {
-      id: 1001,
-      name: "Testing Expense 1",
-      amount: 1000.0,
-      date: new Date(2020, 7, 14),
-    },
-  ];
-  const [db, setDbData] = useState(expenseData);
-  const [listExpenseData, setlistExpenseData] = useState([]);
-  const [year, setYear] = useState("2020");
+  const [db, setDbData] = useState([]);
 
   const [availableYears, setavailableYears] = useState(["2020"]);
   const saveExpenseData = (expense) => {
+    console.log("SAVE => ", expense)
     setDbData((prevDate) => {
       return [expense, ...prevDate];
     });
@@ -58,32 +50,12 @@ function App() {
     });
   };
 
-  const filterChangeHandler = (selectedYear) => {
-    setYear(selectedYear);
-    filterDbData();
-    
-  };
-
-  const filterDbData = () => {
-    const temp = []
-    db.filter((obj)=> {
-      if (obj.date.getFullYear().toString() === year){
-        temp.push(obj)
-      }
-    })
-    setlistExpenseData(temp)
-
-  }
+  console.log("DB = > ", db)
 
   return (
     <>
       <AddExpense onExpenseDataHandeler={saveExpenseData} />
-      <ExpenseFilter
-        years={availableYears}
-        selected={year}
-        onChangeFilter={filterChangeHandler}
-      />
-      <Expense data={listExpenseData} />
+      <Expense data={db} dropDownYears={availableYears} />
     </>
   );
 }

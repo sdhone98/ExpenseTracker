@@ -1,8 +1,7 @@
 import { useState } from "react";
-import Card from "../UI/Card";
 import "./ExpenseFilter.scss";
 const ExpenseFilter = (props) => {
-  const [year, setYear] = useState(props);
+  const [year, setYear] = useState(props.selected);
   const dropdownChangeHandler = (event) => {
     props.onChangeFilter(event.target.value);
     setYear(event.target.value)
