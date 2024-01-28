@@ -38,7 +38,6 @@ function App() {
 
   const [availableYears, setavailableYears] = useState(["2020"]);
   const saveExpenseData = (expense) => {
-    console.log("SAVE => ", expense)
     setDbData((prevDate) => {
       return [expense, ...prevDate];
     });
@@ -49,8 +48,6 @@ function App() {
       ];
     });
   };
-
-  console.log("DB = > ", db)
 
   return (
     <>

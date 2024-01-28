@@ -3,7 +3,6 @@ import Date from "../Date/Date";
 
 import "./ExpenseItem.scss"
 const ExpenseItem = (props) => {
-  console.log("OBJ === > ", props.amount)
   return (
     <Card className="expense-item" key={props.id}>
       <Date date={props.date} />

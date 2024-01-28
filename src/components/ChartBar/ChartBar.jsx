@@ -9,7 +9,7 @@ const ChartBar = (props) => {
   return (
     <div className="chart-bar-list">
       {props.data.map((month) => (
-        <ProgressBar month={month.label} barHight={month.value} />
+        <ProgressBar month={month.label} barHight={month.value} key={month.label}/>
       ))}
     </div>
   );
