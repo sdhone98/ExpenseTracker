@@ -5,6 +5,10 @@ const AddExpense = (props) => {
   const [formTitle, setFormTitle] = useState("");
   const [formAmount, setFormAmount] = useState("");
   const [formDate, setFormDate] = useState("");
+  const [expenseFormVisibility, setexpenseFormVisibility] = useState(false)
+  const [expenseError, setExpenseError] = useState(false)
+  const [amountError, setAmountError] = useState(false)
+  const [dateError, setDateError] = useState(false)
 
   const getInputDetails = (trigger, value) => {
     if (trigger === "name") {
@@ -17,6 +21,12 @@ const AddExpense = (props) => {
   };
 
   const saveDetails = (event) => {
+    setexpenseFormVisibility(true);
+
+    !formTitle && setExpenseError(true)
+    !formTitle && setAmountError(true)
+    !formTitle && setDateError(true)
+
     if (formTitle && formAmount && formDate) {
       event.preventDefault();
       const formData = {
@@ -31,9 +41,20 @@ const AddExpense = (props) => {
       setFormDate("");
     }
   };
+
+  const visibilityHandler = (event) => {
+    event.preventDefault();
+    setexpenseFormVisibility(expenseFormVisibility ? false : true);
+  }
+
   return (
     <Card className="add-expense">
-      <form className="add-expense-form" onSubmit={saveDetails}>
+      <div className="add-expense-btn" style={{display: expenseFormVisibility ? "none" : "flex"}}>
+      <button onClick={visibilityHandler}>Add Expense</button>
+      </div>
+      <form className="add-expense-form" 
+      onSubmit={saveDetails}
+      style={{display: expenseFormVisibility ? "flex" : "none"}}>
         <div className="add-expense-form__name">
           <label>Expense Name</label>
           <input
@@ -67,7 +88,10 @@ const AddExpense = (props) => {
           ></input>
         </div>
 
-        <button>Submit</button>
+        <div className="submit-btn-div">
+          <button>Submit</button>
+          <button onClick={visibilityHandler}>Close</button>
+        </div>
       </form>
     </Card>
   );

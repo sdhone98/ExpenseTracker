@@ -17,7 +17,6 @@ const Expense = (props) => {
     setfilterYear(selectedYear);
   };
 
-  let expensesContent = <p>No expenses found.</p>;
   return (
     <div className="expense">
       <ExpenseFilter
@@ -29,8 +28,6 @@ const Expense = (props) => {
       <div className="expense-list">
         <ExpenseList items={filteredExpenses} />
       </div>
-
-      {/* {expensesContent} */}
     </div>
   );
 };

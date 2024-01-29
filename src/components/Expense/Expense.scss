@@ -11,6 +11,12 @@
 
   .expense-list {
     min-width: 5rem;
+    max-height: 20rem;
+    overflow-y: scroll;
+  }
+
+  .expense-list::-webkit-scrollbar {
+    display: none;
   }
 
   
