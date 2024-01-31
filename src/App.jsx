@@ -19,8 +19,6 @@ function App() {
     });
   };
 
-  console.log([new Date().getFullYear()])
-
   return (
     <>
       <AddExpense onExpenseDataHandeler={saveExpenseData} />
