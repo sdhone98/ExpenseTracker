@@ -1,4 +1,7 @@
-/* :root {
+@import 'src/assets/partials/_fonts.scss';
+
+
+:root {
     color-scheme: light dark;
     color: rgba(255, 255, 255, 0.87);
     background-color: #242424;
@@ -16,4 +19,15 @@
     text-align: center;
     display: flex;
     flex-direction: column;
-} */
+}
+
+#root {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+body {
+    font-family: "Inter";
+    line-height: 1.5;
+    font-weight: 400;
+}
