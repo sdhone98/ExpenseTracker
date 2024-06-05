@@ -4,8 +4,8 @@ const ProgressBar = (props) => {
     const height = props.barHight+"%"
   return (
     <div className="bar-container">
-      <div class="bar-backgroud">
-        <div class="bar-backgroud__bar" style={{height:height}}></div>
+      <div className="bar-backgroud">
+        <div className="bar-backgroud__bar" style={{height:height}}></div>
       </div>
       <label>{months}</label>
     </div>
